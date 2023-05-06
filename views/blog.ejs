@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <%- include('./partials/navbar') %>
+
+    <div className="container mt-1">
+      <div className="container-fluid" style="height: 400px">
+        <img
+          width="100%"
+          height="100%"
+          src="<%= blog.coverImageURL %>"
+          alt="<%=blog.title %>"
+        />
+      </div>
+      <h1 className="px-4"><%= blog.title %></h1>
+      <pre className="px-4 fs-6" style="font-family: sans-serif">
+      <%= blog.body %></pre
+      >
+    </div>
+
+    <div className="container mt-4">
+      <hr />
+      <img
+        width="40px"
+        height="40px"
+        src="<%= blog.createdBy.profileImageURL %>"
+        alt="<%= blog.createdBy.profileImageURL %>"
+      />
+      <span><%= blog.createdBy.fullName %></span>
+    </div>
+
+    <div className="container mt-4">
+      <p>Comments (<%=comments.length %>)</p>
+      <% if(locals.user){ %>
+      <form className="" action="/blog/comment/<%=blog._id%>" method="post">
+        <div className="mb-1">
+          <input
+            type="text"
+            className="form-control"
+            id="comment"
+            name="comment"
+            placeholder="Enter your comment"
+          />
+        </div>
+        <button className="btn btn-sm btn-primary">Add Comment</button>
+      </form>
+      <% } %>
+    </div>
+
+    <div className="container">
+      <hr />
+      <% if(locals.comments){ %> <% comments.forEach(comment=>{ %>
+      <div className="">
+        <img
+          width="40px"
+          height="40px"
+          src="<%= comment.createdBy.profileImageURL %>"
+          alt="<%= comment.createdBy.profileImageURL %>"
+        />
+        <span><%= comment.createdBy.fullName %></span>
+        <pre style="font-family: sans-serif" className="fs-6">
+        <%= comment.content %></pre
+        >
+      </div>
+      <% }) %> <% } %>
+    </div>
+
+    <div className="mb-5"></div>
+    <%- include('./partials/script') %>
+  </body>
+</html>

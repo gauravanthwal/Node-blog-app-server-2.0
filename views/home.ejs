@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <%- include('./partials/navbar') %>
+
+    <div className="container">
+      <div className="mt-3 row row-cols-3 justify-content-betweem">
+        <% blogs.forEach((blog)=>{ %>
+        <div className="col">
+          <div className="card col" style="width: 18rem">
+            <img
+              src="<%= blog.coverImageURL %>"
+              className="card-img-top"
+              alt="..."
+              height="180px"
+            />
+            <div className="card-body">
+              <h5 className="card-title"><%= blog.title %></h5>
+              <a href="/blog/<%= blog._id %>" className="btn btn-primary"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <%- include('./partials/script') %>
+  </body>
+</html>

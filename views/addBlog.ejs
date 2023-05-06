@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <%- include('./partials/navbar') %>
+
+    <form
+      className="container"
+      style="max-width: 600px"
+      action="/blog/add-new"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <div className="my-3">
+        <label htmlhtmlFor="CoverImage" className="form-label"
+          >Cover Image</label
+        >
+        <input
+          type="file"
+          className="form-control"
+          id="coverImage"
+          name="coverImage"
+        />
+      </div>
+      <div className="my-3">
+        <label htmlhtmlFor="title" className="form-label">Titile</label>
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          name="title"
+          placeholder="Title"
+        />
+      </div>
+      <div className="my-3">
+        <label htmlhtmlFor="body" className="form-label">Body</label>
+        <textarea
+          className="form-control"
+          id="body"
+          name="body"
+          placeholder="Start Writing your blog... "
+          rows="5"
+        ></textarea>
+      </div>
+      <button className="btn btn-primary">Post Blog</button>
+    </form>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>
