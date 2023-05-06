@@ -5,7 +5,7 @@ const cors = require("cors");
 const path = require("path");
 // var bodyParser = require("body-parser");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const { connectDB } = require("./connection");
 const { Blog } = require("./models/blogSchema");
 
@@ -17,7 +17,7 @@ const { checkForAuthCookie } = require("./middlewares/auth");
 // DB connection
 connectDB();
 var corsOptions = {
-  origin: "http://localhost:5173/",
+  origin: "*",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
