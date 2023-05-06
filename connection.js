@@ -5,7 +5,7 @@ let db =
 
 const connectDB = () => {
   mongoose
-    .connect(db.replace("<password>", "gaurav123"))
+    .connect(db.replace("<password>", process.env.MONGO_URI_PASSWORD))
     .then((res) => {
       console.log("db connected");
     })
